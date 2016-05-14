@@ -9,7 +9,7 @@ body {
     left: 10px;
     right: 10px;
     bottom: 10px;
-    background-color: #333333;
+    background-color: #aaaaaa;
     opacity: 1.0;
 }
 
@@ -24,9 +24,8 @@ header {
 
 h1 {
     text-align: center;
-    font-style: italic;
     font-weight: bold;
-    font-size: 1.25em;
+    font-size: 1.5em;
 }
 
 p {
@@ -37,36 +36,71 @@ p {
 }
 .subarea {
     position: absolute;
-    width: 200px;
-    height: 200px;
-    opacity: 0.6;
-    padding-left: 10px;
+    /*width: 200px;
+    height: 200px;*/
+    opacity: 1.0;
+    padding-left: 4px;
+    padding-right: 4px;
     /*border: thin;*/
 }
-#area1 {
-    width: 500px;
+#mainOutputArea {
+    width: 75%;
     height: 65%;
     left: 30px;
     top: 30px;
-    background-color: lightskyblue;
+    background-color: white;
     opacity: 1.0;
 }
 
-#area2 {
-    background-color: #ffaa88;
+#textInputArea {
+    background-color: #ccffcc;
     left: 30px;
     bottom: 30px;
+    right: 30px;
     height: 25%;
 }
 
-#area3 {
-    background-color: darkseagreen;
+#otherOptionsArea {
+    background-color: #ddddee;
     top: 30px;
     right: 30px;
+    width: 15%;
+    height: 65%;
 }
 
 #area4 {
     background-color: violet;
     right: 30px;
     bottom: 30px;
+}
+
+.story-title {
+    font-style: italic;
+    padding-left: 6px;
+    font-size: 1.25em;
+}
+
+.story-origin {
+    font-weight: bold;
+}
+
+.option-row {
+    margin-top: 12px;
+    position: fixed;
+}
+
+#option-row1 {
+    top: 30px;
+}
+
+#option-row2 {
+    top: 100px;
+}
+
+#option-row3 {
+    top: 200px;
+}
+
+#option-row4 {
+    top: 220px;
 }

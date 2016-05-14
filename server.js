@@ -7,8 +7,8 @@ var app = express();
 
 app.set('port', process.env.PORT || 3000);
 
-app.use('/', express.static(__dirname + '/../www'));
-app.use(favicon(__dirname + '/../www/images/favicon.ico'));
+app.use('/', express.static(__dirname + '/www'));
+app.use(favicon(__dirname + '/www/images/favicon.ico'));
 
 // Route categories
 //  /db -- database requests

@@ -2,25 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Style Sheet Test App</title>
+    <title>Story Database</title>
     <link rel="stylesheet" href="./css/styles.css" type="text/css" >
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="scripts/view.js"></script>
+    <script src="scripts/dbClient.js"></script>
+
 </head>
 <body>
 <div id="appbody">
-    <header>Our Application</header>
-    <div id="area1" class="subarea" >
-        <h1>Area 1</h1>
-        <p>We have a large amount of text for this area. Please read all of it very carefully, as it contains
-            some vital and fascinating information about the economy, technology, politics and the
-            military-industrial-entertainment complex.
-        </p>
+    <header>Story Database Viewer/Editor</header>
+    <div id="mainOutputArea" class="subarea" >
+        <script>
+            displayWelcomeView();
+        </script>
     </div>
 
+    <div id="textInputArea" class="subarea" >
 
+    </div>
 
-    <div id="area2" class="subarea" >Area 2</div>
-    <div id="area3" class="subarea" >Area 3</div>
-    <div id="area4" class="subarea" >Area 4</div>
+    <div id="otherOptionsArea" class="subarea" >
+        <form>
+            <table >
+                <tr id='option-row1' class='option-row'><td>Choose an Option:</td></tr>
+                <tr id='option-row2' class='option-row'><td><input type=button OnClick="listAllStories();" value="List All Stories"></td></tr>
+                <tr id='option-row3' class='option-row'><td>Stories containing:</td></tr>
+                <tr id='option-row4' class='option-row'><td><input name="search_containing" size=20></td></tr>
+            </table>
+        </form>
+
+    </div>
 </div>
 </body>
 </html>
