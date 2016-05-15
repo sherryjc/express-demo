@@ -1,10 +1,10 @@
 var fs = require('fs');
 
-// This function is run outside the app to get an initial database in place.
+// This function is run as a standalone app to get an initial version of the database in place.
 
 
-var dbAllStories = [
-    {
+var dbAllStories = {
+    '1': {
         'id': 1,
         'title': 'Data Security Breaches Up Worldwide, According to Expert',
         'origin': 'Reuters',
@@ -13,7 +13,7 @@ var dbAllStories = [
         "'general lack of understanding of security in the software development community', and commented further that " +
         "there 'appears to be no hope of improvement in sight'."
     },
-    {
+    '2': {
         'id': 2,
         'origin': 'Wired',
         'title': 'Data Security Breaches Down Worldwide, According to Expert',
@@ -21,7 +21,7 @@ var dbAllStories = [
         "data breaches were down significantly in the first quarter of 2016. Mr. Dragon credits the increase to " +
         "'great inroads being made in the understanding of security in the software development community'."
     }
-];
+};
 
 var dbPath = "./db.json";
 

@@ -1,15 +1,13 @@
 
-// Scripting functions related to database queries
+// Scripting functions related to database operations.
+// These are implemented as AJAX requests to various server URLs.
 
-// These will be implemented as requests on various server URLs.
-
+var url_base = 'http://127.0.0.1:3000';
 
 
 var dbGetAllStoryTitles = function(cb) {
-    var that = this;
     $.ajax({
-        // This is the url you should use to communicate with the parse API server.
-        url: 'http://127.0.0.1:3000/db/getStoryTitles',
+        url: url_base + '/db/getStoryTitles',
         type: 'GET',
         data: {
             limit: 500
@@ -27,33 +25,30 @@ var dbGetAllStoryTitles = function(cb) {
 
 // Get a story given a story id
 // TODO: implement
-var getStoryById = function(id) {
+var dbGetStoryById = function(id) {
 
 };
 
+var dbSendStory = function(title, body, cb) {
+        var story = {
+            'title': title,
+            'body': body
+        };
 
-// Model for ajax post request to post a new story
-// TODO - implement
-/*
-app.postAjax = function(cb, message) {
-    $.ajax({
-        // This is the url you should use to communicate with the parse API server.
-        url: 'https://api.parse.com/1/classes/chatterbox',
-        type: 'POST',
-        data: JSON.stringify(message),
-        contentType: 'application/json',
-        success: function (data) {
-            //debugger;
-            console.log('chatterbox: POST Message sent. Data: ', data);
-            cb(data);
-
-        },
-        error: function (data) {
-            // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
-            console.error('chatterbox: Failed to send the GET message. Error: ', data);
-        }
-    });
+        $.ajax({
+            url: url_base + '/db/addStory',
+            type: 'POST',
+            data: JSON.stringify(story),
+            contentType: 'application/json',
+            success: function (data) {
+                console.log('dbSendStory: POST Message sent. Data: ', data);
+                cb();
+            },
+            error: function (data) {
+                console.error('dbSendStory: Failed to send the POST message. Error: ', data);
+            }
+        });
 };
 
-*/
+
 

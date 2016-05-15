@@ -17,4 +17,18 @@ router.get('/getStoryById', function(req, res) {
         console.log("In getStoryById callback");
     });
 });
+
+router.post('/addStory', function(req, res) {
+    var req_body = [];
+    req.on('data', function(chunk) {
+        req_body.push(chunk);
+    });
+    req.on('end', function() {
+        var storyObj = JSON.parse(req_body);
+        storyObj.origin = "User-submitted";
+        dbIfx.addStory(storyObj, function(){
+            console.log("In addStory callback");
+        });
+    });
+});
 module.exports = router;

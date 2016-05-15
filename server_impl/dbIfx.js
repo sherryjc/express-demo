@@ -20,9 +20,19 @@ var dbIfx = {
             return cb(retArray);
         });
     },
+
     'getStoryById': function(cb) {
         var storyObj = {};
         cb(storyObj);
+    },
+
+    'addStory': function(story, cb) {
+        // Need to supply a unique story identifier
+        story.id = getUniqueId();
+        // add this story to the in-memory database
+        dbWholeDb[story.id] = story;
+        // then write the db to disk
+        dbWrite(cb);
     }
 };
 
@@ -30,14 +40,14 @@ module.exports = dbIfx;
 
 // Todo: Encapsulate the following in a private structure
 
-var bDbInit = false;
+var bDbUpToDate = false;
 var dbPath = "./db/db.json";
 var dbWholeDb = {};
 var dbGet = function(cb) {
-    if (bDbInit === true) {
+    if (bDbUpToDate === true) {
         cb(dbWholeDb);
     }
-    bDbInit = true;
+    bDbUpToDate = true;
     fs.readFile(dbPath, function (err, json_data) {
         if (err) {
             console.log("Error reading file " + dbPath + " : " + err);
@@ -46,5 +56,19 @@ var dbGet = function(cb) {
             dbWholeDb = JSON.parse(json_data);
             cb(dbWholeDb);
         }
+    });
+};
+
+var getUniqueId = function() {
+    return Date.now();
+};
+
+var dbWrite = function(cb) {
+    var dbJson = JSON.stringify(dbWholeDb);
+    fs.writeFile(dbPath, dbJson, function (err) {
+        if (err) {
+            console.log("Error writing file " + dbPath + " : " + err);
+        }
+        cb(err);
     });
 };
