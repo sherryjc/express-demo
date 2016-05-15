@@ -9,13 +9,12 @@ body {
     left: 10px;
     right: 10px;
     bottom: 10px;
-    background-color: #aaaaaa;
+    background-color: #9999aa;
     opacity: 1.0;
 }
 
 header {
     text-align: center;
-    font-style: italic;
     font-weight: bold;
     font-size: 1.25em;
     background-color: #00ff00;
@@ -53,7 +52,7 @@ p {
 }
 
 #textInputArea {
-    background-color: #ccffcc;
+    background-color: #ddddee;
     left: 30px;
     bottom: 30px;
     right: 30px;
@@ -61,7 +60,7 @@ p {
 }
 
 #otherOptionsArea {
-    background-color: #ddddee;
+    background-color: #ddffdd;
     top: 30px;
     right: 30px;
     width: 15%;

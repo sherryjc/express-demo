@@ -1,44 +1,59 @@
 
 // Scripting functions related to database queries
 
-// These will be implemented as requests on various server routes.
-
-// For now, we supply some hard-wired local data
-
-var dbAllStories = [
-    {
-        'id': 1,
-        'title': 'Data Security Breaches Up Worldwide, According to Expert',
-        'origin': 'Reuters',
-        'content': "According to Mr. Austin Powers, spokesman for the data security consulting firm 'Security \'r Us', " +
-        "data breaches were up sharply in the first quarter of 2016. Mr. Powers blames the increase on a " +
-        "'general lack of understanding of security in the software development community', and commented further that " +
-        "there 'appears to be no hope of improvement in sight'."
-    },
-    {
-        'id': 2,
-        'origin:': 'Wired',
-        'title': 'Data Security Breaches Down Worldwide, According to Expert',
-        'content': "According to Mr. Erasmus B. Dragon, spokesman for the data security consulting firm 'What, Me Worry?',\ " +
-        "data breaches were down significantly in the first quarter of 2016. Mr. Dragon credits the increase to " +
-        "'great inroads being made in the understanding of security in the software development community'."
-    }
-];
+// These will be implemented as requests on various server URLs.
 
 
 
-var getAllStoryTitles = function() {
-    var retArray = [];
+var dbGetAllStoryTitles = function(cb) {
+    var that = this;
+    $.ajax({
+        // This is the url you should use to communicate with the parse API server.
+        url: 'http://127.0.0.1:3000/db/getStoryTitles',
+        type: 'GET',
+        data: {
+            limit: 500
+        },
+        contentType: 'application/json',
+        success: function (data) {
+            cb(data);
+        },
+        error: function (err) {
+            console.log("Error in ajax getStoryTitles: " + err);
+        }
+    });
+}
 
-    for (var key in dbAllStories) {
-        var outObj = {};
-        outObj.id = dbAllStories[key].id;
-        outObj.title = dbAllStories[key].title;
-        retArray.push(outObj);
-    }
-    return retArray;
-};
 
-var getStoryById = function() {
+// Get a story given a story id
+// TODO: implement
+var getStoryById = function(id) {
 
 };
+
+
+// Model for ajax post request to post a new story
+// TODO - implement
+/*
+app.postAjax = function(cb, message) {
+    $.ajax({
+        // This is the url you should use to communicate with the parse API server.
+        url: 'https://api.parse.com/1/classes/chatterbox',
+        type: 'POST',
+        data: JSON.stringify(message),
+        contentType: 'application/json',
+        success: function (data) {
+            //debugger;
+            console.log('chatterbox: POST Message sent. Data: ', data);
+            cb(data);
+
+        },
+        error: function (data) {
+            // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
+            console.error('chatterbox: Failed to send the GET message. Error: ', data);
+        }
+    });
+};
+
+*/
+

@@ -5,6 +5,8 @@
     <title>Story Database</title>
     <link rel="stylesheet" href="./css/styles.css" type="text/css" >
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="scripts/controller.js"></script>
+    <script src="scripts/model.js"></script>
     <script src="scripts/view.js"></script>
     <script src="scripts/dbClient.js"></script>
 
@@ -26,7 +28,7 @@
         <form>
             <table >
                 <tr id='option-row1' class='option-row'><td>Choose an Option:</td></tr>
-                <tr id='option-row2' class='option-row'><td><input type=button OnClick="listAllStories();" value="List All Stories"></td></tr>
+                <tr id='option-row2' class='option-row'><td><input type=button OnClick="updateStoryTitles();" value="List All Stories"></td></tr>
                 <tr id='option-row3' class='option-row'><td>Stories containing:</td></tr>
                 <tr id='option-row4' class='option-row'><td><input name="search_containing" size=20></td></tr>
             </table>

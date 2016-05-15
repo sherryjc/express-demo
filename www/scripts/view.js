@@ -1,16 +1,24 @@
 
 
-var htmlWelcomeStr = "<h1>Welcome to the Story Database</h1>" +
-"<p>You can search and view existing stories or create your own. To list or search " +
-"stories, see the options panel at right. To enter your own story, use the text area below. </p>";
 
 var displayWelcomeView = function() {
-    $('#mainOutputArea').html(htmlWelcomeStr);
+    var $welcomeBody = $('<div id="welcome-body"><h1>Welcome to the Story Database</h1></div>');
+    var $bodyText = $('<div id="welcome-body-text"></div>');
+    var p1 = "You can search and view existing stories or create your own.";
+    var p2 ="To list or search stories, see the options panel at right. To enter your own story, use the text area below.";
+    var $bodyP1 = $('<p></p>');
+    $bodyP1.text(p1);
+    $bodyP1.appendTo($bodyText);
+    var $bodyP2 = $('<p></p>');
+    $bodyP2.text(p2);
+    $bodyP2.appendTo($bodyText);
+    $bodyText.appendTo($welcomeBody);
+
+    $('#mainOutputArea').html($welcomeBody);
 };
 
-var listAllStories = function() {
+var displayStoryTitles = function(titleObjs) {
 
-    var titleObjs = getAllStoryTitles();
     var $storiesBody = $('<div id="stories-body"><h1>Available Stories:</h1></div>');
     var $storiesList = $('<ul id="stories-list"></ul>');
     $storiesList.appendTo($storiesBody);
